@@ -10,6 +10,7 @@ OBJ =  $(SRC:.c=.o)
 INC = fillit.h
 
 LFT_PATH = ./libft
+LFT_INC = $(LFT_PATH)/includes
 LFT_FLAGS = -L $(LFT_PATH) -lft
 
 all: $(NAME)
