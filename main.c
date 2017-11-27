@@ -12,7 +12,7 @@ int				main(int ac, char **av)
 			ft_putstr_fd("error\n", 1);
 			return (-1);
 		}
-		create_soluce(list, tetris_lstsize(list));
+		resolve(list, tetris_lstsize(list));
 		tetris_lstdel(list);
 	}
 	else
