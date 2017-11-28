@@ -6,7 +6,7 @@
 /*   By: tcassier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 21:53:49 by tcassier          #+#    #+#             */
-/*   Updated: 2017/11/27 08:52:31 by tcassier         ###   ########.fr       */
+/*   Updated: 2017/11/28 00:49:32 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,21 @@ static t_stock		*check_fd(t_stock **begin_list, const int fd)
 
 static size_t		rest_instance(t_stock *file, char **line)
 {
-	size_t	i;
-	char	*tmp;
+	size_t			index;
+	char			*tmp;
 
-	i = -1;
+	index = -1;
 	*line = NULL;
 	if (file->rest)
 	{
-		while (file->rest[++i])
+		while (file->rest[++index])
 		{
-			if (file->rest[i] == '\n')
+			if (file->rest[index] == '\n')
 			{
-				if (!(*line = ft_strndup(file->rest, i)))
+				if (!(*line = ft_strndup(file->rest, index)))
 					return (0);
 				tmp = file->rest;
-				if (!(file->rest = ft_strdup(file->rest + i + 1)))
+				if (!(file->rest = ft_strdup(file->rest + index + 1)))
 					return (0);
 				free(tmp);
 				return (1);
@@ -66,12 +66,12 @@ static size_t		rest_instance(t_stock *file, char **line)
 	return (2);
 }
 
-static size_t		create_line(char *buffer, char **line, size_t i)
+static size_t		create_line(char *buffer, char **line, size_t index)
 {
-	char	*tmp;
-	char	*buff_copy;
+	char			*tmp;
+	char			*buff_copy;
 
-	if (!(buff_copy = ft_strndup(buffer, i)))
+	if (!(buff_copy = ft_strndup(buffer, index)))
 		return (0);
 	if (*line)
 	{
@@ -88,20 +88,20 @@ static size_t		create_line(char *buffer, char **line, size_t i)
 
 static size_t		get_line(char *buffer, t_stock *file, char **line)
 {
-	size_t	i;
-	int		ret;
+	size_t			index;
+	int				ret;
 
-	i = 0;
+	index = 0;
 	ret = 2;
-	while (buffer[i] && buffer[i] != '\n')
-		i++;
-	if (buffer[i] == '\n')
+	while (buffer[index] && buffer[index] != '\n')
+		index++;
+	if (buffer[index] == '\n')
 	{
-		if (!(file->rest = ft_strdup(buffer + i + 1)))
+		if (!(file->rest = ft_strdup(buffer + index + 1)))
 			return (0);
 		ret = 1;
 	}
-	if (!(create_line(buffer, line, i)))
+	if (!(create_line(buffer, line, index)))
 		return (0);
 	return (ret);
 }
@@ -113,23 +113,24 @@ int					get_next_line(const int fd, char **line)
 	char			buffer[BUFF_SIZE + 1];
 	int				check;
 
-	if ((!line || fd < 0) || !(file = check_fd(&begin_list, fd)))
-		return (-1);
-	if (!(check = rest_instance(file, line)))
+	if ((!line || fd < 0) || !(file = check_fd(&begin_list, fd)) ||
+	!(check = rest_instance(file, line)))
 		return (-1);
 	if (check == 1)
 		return (1);
 	while ((check = read(fd, buffer, BUFF_SIZE)) > 0)
 	{
 		buffer[check] = '\0';
-		if (!(check = get_line(buffer, file, line)))
-			return (-1);
-		if (check == 1)
-			return (1);
+		if (!(check = get_line(buffer, file, line)) || check == 1)
+			return (check == -1 ? -1 : 1);
 	}
 	if (*line && *line[0] != '\0')
 		return (1);
 	else if (check == 0)
-		return (!(*line = ft_strnew(0)) ? -1 : 0);
+	{
+		free(*line);
+		*line = NULL;
+		return (0);
+	}
 	return (-1);
 }
