@@ -6,17 +6,17 @@
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:20:20 by tcassier          #+#    #+#             */
-/*   Updated: 2017/12/08 04:26:05 by tcassier         ###   ########.fr       */
+/*   Updated: 2017/12/08 11:07:07 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static void		put_width(t_tetris *list)
+static void	put_width(t_tetris *list)
 {
-	int 		x;
-	int 		y;
-	int 		count;
+	int		x;
+	int		y;
+	int		count;
 
 	while (list)
 	{
@@ -40,11 +40,11 @@ static void		put_width(t_tetris *list)
 	}
 }
 
-static void		put_height(t_tetris *list)
+static void	put_height(t_tetris *list)
 {
-	int 		x;
-	int 		y;
-	int 		count;
+	int		x;
+	int		y;
+	int		count;
 
 	while (list)
 	{
@@ -68,11 +68,11 @@ static void		put_height(t_tetris *list)
 	}
 }
 
-static void		put_letter(t_tetris *list)
+static void	put_letter(t_tetris *list)
 {
-	char		letter;
-	int			x;
-	int			y;
+	char	letter;
+	int		x;
+	int		y;
 
 	letter = 'A';
 	while (list)
@@ -96,7 +96,7 @@ static void		put_letter(t_tetris *list)
 	}
 }
 
-void			put_lst(t_tetris *list)
+void		put_lst(t_tetris *list)
 {
 	put_width(list);
 	put_height(list);

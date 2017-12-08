@@ -6,7 +6,7 @@
 #    By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/07 23:19:18 by tcassier          #+#    #+#              #
-#    Updated: 2017/12/08 03:35:53 by tcassier         ###   ########.fr        #
+#    Updated: 2017/12/08 07:33:48 by tcassier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ CFLAGS = -Wall -Werror -Wextra -I$(INC_PATH)
 SRC_PATH = ./src/
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 SRC = backtrack.c        \
+	  check_link.c       \
 	  check_tetris.c     \
 	  failure.c          \
 	  main.c             \

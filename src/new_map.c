@@ -6,7 +6,7 @@
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:20:10 by tcassier          #+#    #+#             */
-/*   Updated: 2017/12/08 04:39:05 by tcassier         ###   ########.fr       */
+/*   Updated: 2017/12/08 08:28:19 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char			**create_map(int size_map)
 {
 	char		**map;
 	int			index;
-	
+
 	if (!(map = (char**)ft_memalloc(sizeof(char*) * (size_map + 1))))
 		return (NULL);
 	index = -1;

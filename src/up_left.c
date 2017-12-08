@@ -6,33 +6,42 @@
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 02:25:43 by tcassier          #+#    #+#             */
-/*   Updated: 2017/12/08 04:25:39 by tcassier         ###   ########.fr       */
+/*   Updated: 2017/12/08 09:13:12 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	up_left(char tab[4][4])
+static int	height_dotted(char tab[4][4])
 {
-	if (ft_strncmp("....", tab[0], 4) == 0)
+	int		index;
+
+	index = 0;
+	while (index < 4 && tab[index][0] == '.')
+		index++;
+	return (index);
+}
+
+void		up_left(char tab[4][4])
+{
+	int		index;
+
+	if (height_dotted(tab) == 4)
 	{
-		ft_strncpy(tab[0], tab[1], 4);
-		ft_strncpy(tab[1], tab[2], 4);
-		ft_strncpy(tab[2], tab[3], 4);
-		ft_strncpy(tab[3], "....", 4);
+		index = -1;
+		while (++index < 4)
+			ft_strncpy(tab[index], &(tab[index][1]), 3);
+		index = -1;
+		while (++index < 4)
+			tab[index][3] = '.';
 		up_left(tab);
 	}
-	else if (tab[0][0] == '.' && tab[1][0] == '.'
-	&& tab[2][0] == '.' && tab[3][0] == '.')
+	if (!ft_strncmp(tab[0], "....", 4))
 	{
-		ft_strncpy(tab[0], &(tab[0][1]), 3);
-		ft_strncpy(tab[1], &(tab[1][1]), 3);
-		ft_strncpy(tab[2], &(tab[2][1]), 3);
-		ft_strncpy(tab[3], &(tab[3][1]), 3);
-		tab[0][3] = '.';
-		tab[1][3] = '.';
-		tab[2][3] = '.';
-		tab[3][3] = '.';
+		index = -1;
+		while (++index < 3)
+			ft_strncpy(tab[index], tab[index + 1], 4);
+		ft_strncpy(tab[3], "....", 4);
 		up_left(tab);
 	}
 }

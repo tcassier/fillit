@@ -6,7 +6,7 @@
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:19:36 by tcassier          #+#    #+#             */
-/*   Updated: 2017/12/08 04:26:26 by tcassier         ###   ########.fr       */
+/*   Updated: 2017/12/08 07:34:17 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct		s_tetris
 }					t_tetris;
 
 int					backtrack(t_tetris *list, char **map, int size_map);
+int					check_link(char tab[4][4], int x, int y);
 int					check_tetris(t_tetris *list);
 int					check_place(t_tetris *list, char **map, int x, int y);
 char				**create_map(int size);
