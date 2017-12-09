@@ -6,7 +6,7 @@
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:20:20 by tcassier          #+#    #+#             */
-/*   Updated: 2017/12/08 11:07:07 by tcassier         ###   ########.fr       */
+/*   Updated: 2017/12/09 09:09:20 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	put_width(t_tetris *list)
 	int		x;
 	int		y;
 	int		count;
+	int		passed;
 
 	while (list)
 	{
@@ -24,14 +25,14 @@ static void	put_width(t_tetris *list)
 		x = -1;
 		while (++x < 4)
 		{
+			passed = 0;
 			y = -1;
 			while (++y < 4)
 			{
-				if (list->tab[y][x] == '#')
+				if (list->tab[y][x] == '#' && passed == 0)
 				{
+					passed = 1;
 					count++;
-					x++;
-					y = -1;
 				}
 			}
 		}
@@ -45,6 +46,7 @@ static void	put_height(t_tetris *list)
 	int		x;
 	int		y;
 	int		count;
+	int		passed;
 
 	while (list)
 	{
@@ -52,14 +54,14 @@ static void	put_height(t_tetris *list)
 		y = -1;
 		while (++y < 4)
 		{
+			passed = 0;
 			x = -1;
 			while (++x < 4)
 			{
-				if (list->tab[y][x] == '#')
+				if (list->tab[y][x] == '#' && passed == 0)
 				{
 					count++;
-					y++;
-					x = -1;
+					passed = 1;
 				}
 			}
 		}
