@@ -6,7 +6,7 @@
 #    By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/07 23:19:18 by tcassier          #+#    #+#              #
-#    Updated: 2017/12/08 07:33:48 by tcassier         ###   ########.fr        #
+#    Updated: 2017/12/11 17:32:37 by tcassier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME = fillit
 
 CC = clang
-CFLAGS = -Wall -Werror -Wextra -I$(INC_PATH)
+CFLAGS = -Wall -Werror -Wextra -I$(INC_PATH) -I$(LFT_INC_PATH)
 
 SRC_PATH = ./src/
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
@@ -39,17 +39,17 @@ OBJ = $(SRC:.c=.o)
 
 INC_PATH = ./includes/
 INCS = $(addprefix $(INC_PATH), $(INC))
-INC = fillit.h    \
-	  libft.h
+INC = fillit.h
 
+LFT_INC_PATH = $(LFT_PATH)includes
 LFT_PATH = ./libft/
 LFT_FLAGS = -L $(LFT_PATH) -lft
 
 all: $(NAME)
 
 $(NAME): $(OBJ_PATH) $(OBJS)
-	@make -C $(LFT_PATH) all
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LFT_FLAGS)
+	@make -C $(LFT_PATH) re
+	@$(CC) $(CFLAGS) -o $@ $(OBJS) $(LFT_FLAGS)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(INCS)
 	$(CC) $(CFLAGS) -c $< -o $@
