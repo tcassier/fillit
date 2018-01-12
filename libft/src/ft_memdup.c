@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_memdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 19:42:39 by tcassier          #+#    #+#             */
-/*   Updated: 2018/01/12 19:42:40 by tcassier         ###   ########.fr       */
+/*   Created: 2018/01/06 16:08:30 by tcassier          #+#    #+#             */
+/*   Updated: 2018/01/12 19:32:33 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+void		*ft_memdup(const void *s, size_t n)
 {
-	return (ft_isupper(c) ? c + 'a' - 'A' : c);
+	char	*ret;
+
+	if (!(ret = ft_strnew(n)))
+		return (NULL);
+	ret = (char*)ft_memcpy((void*)ret, s, n);
+	return ((void*)ret);
 }

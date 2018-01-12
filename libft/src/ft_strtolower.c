@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strtolower.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 19:42:39 by tcassier          #+#    #+#             */
-/*   Updated: 2018/01/12 19:42:40 by tcassier         ###   ########.fr       */
+/*   Created: 2018/01/12 19:42:21 by tcassier          #+#    #+#             */
+/*   Updated: 2018/01/12 19:42:22 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+void	ft_strtolower(char *str)
 {
-	return (ft_isupper(c) ? c + 'a' - 'A' : c);
+	while (*str)
+		*str = ft_tolower(*str);
 }

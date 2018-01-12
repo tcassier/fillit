@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_memjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/08 01:10:03 by tcassier          #+#    #+#             */
-/*   Updated: 2017/12/08 01:18:38 by tcassier         ###   ########.fr       */
+/*   Created: 2017/12/16 00:16:12 by tcassier          #+#    #+#             */
+/*   Updated: 2018/01/12 19:34:40 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_sqrt(int n)
+void		*ft_memjoin(void *s1, size_t len1, void *s2, size_t len2)
 {
-	int	index;
+	char	*ret;
 
-	index = 0;
-	if (n <= 0)
-		return (0);
-	while (index * index < n)
-		index++;
-	return (index);
+	if (!(ret = (char*)ft_memalloc(sizeof(char) * (len1 + len2))))
+		return (NULL);
+	ft_memcpy((void*)ret, s1, len1);
+	ft_memcpy((void*)ret + len1, s2, len2);
+	return ((void*)ret);
 }

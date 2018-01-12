@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_memdel_bis.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 19:42:39 by tcassier          #+#    #+#             */
-/*   Updated: 2018/01/12 19:42:40 by tcassier         ###   ########.fr       */
+/*   Created: 2017/12/16 03:44:56 by tcassier          #+#    #+#             */
+/*   Updated: 2018/01/12 19:32:27 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+void	ft_memdel_bis(void *ap, size_t n)
 {
-	return (ft_isupper(c) ? c + 'a' - 'A' : c);
+	free(ap);
+	n = 0;
 }
