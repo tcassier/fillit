@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_wchar_byte.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 19:30:17 by tcassier          #+#    #+#             */
-/*   Updated: 2018/01/12 22:26:28 by tcassier         ###   ########.fr       */
+/*   Created: 2018/01/17 23:53:17 by tcassier          #+#    #+#             */
+/*   Updated: 2018/01/18 02:55:54 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*ft_memccpy(void *dst, const void *src, int c, size_t n)
+int					ft_wchar_byte(wchar_t c)
 {
-	size_t	index;
+	unsigned int	len;
+	unsigned int	tmp;
 
-	index = 0;
-	while (index < n)
+	len = 0;
+	tmp = 1;
+	while (tmp <= (unsigned int)c)
 	{
-		((char*)dst)[index] = ((char*)src)[index];
-		if (((char*)src)[index] == (char)c)
-			return (dst + index + 1);
-		index++;
+		tmp <<= 1;
+		len++;
 	}
-	return (NULL);
+	if (len <= 7)
+		return (1);
+	else if (len <= 11)
+		return (2);
+	else if (len <= 16)
+		return (3);
+	else if (len <= 21)
+		return (4);
+	else
+		return (-1);
 }

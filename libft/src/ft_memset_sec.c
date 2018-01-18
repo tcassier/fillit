@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_memset_sec.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcassier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 19:30:17 by tcassier          #+#    #+#             */
-/*   Updated: 2018/01/12 22:26:28 by tcassier         ###   ########.fr       */
+/*   Created: 2017/11/08 03:58:20 by tcassier          #+#    #+#             */
+/*   Updated: 2018/01/11 19:49:19 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	*ft_memset_sec(void *b, int c, size_t len)
 {
-	size_t	index;
-
-	index = 0;
-	while (index < n)
-	{
-		((char*)dst)[index] = ((char*)src)[index];
-		if (((char*)src)[index] == (char)c)
-			return (dst + index + 1);
-		index++;
-	}
-	return (NULL);
+	while (len-- && b)
+		((char*)b)[len] = (char)c;
+	return (b);
 }

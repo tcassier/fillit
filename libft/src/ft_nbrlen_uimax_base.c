@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_nbrlen_uimax_base.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 19:30:17 by tcassier          #+#    #+#             */
-/*   Updated: 2018/01/12 22:26:28 by tcassier         ###   ########.fr       */
+/*   Created: 2018/01/10 11:54:21 by tcassier          #+#    #+#             */
+/*   Updated: 2018/01/10 12:15:55 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*ft_memccpy(void *dst, const void *src, int c, size_t n)
+int		ft_nbrlen_uimax_base(uintmax_t n, int base)
 {
-	size_t	index;
+	int	len;
 
-	index = 0;
-	while (index < n)
+	len = 0;
+	if (n == 0)
+		return (1);
+	while (n > 0)
 	{
-		((char*)dst)[index] = ((char*)src)[index];
-		if (((char*)src)[index] == (char)c)
-			return (dst + index + 1);
-		index++;
+		n /= base;
+		len++;
 	}
-	return (NULL);
+	return (len);
 }

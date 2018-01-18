@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 19:30:17 by tcassier          #+#    #+#             */
-/*   Updated: 2018/01/12 22:26:28 by tcassier         ###   ########.fr       */
+/*   Created: 2018/01/18 04:57:15 by tcassier          #+#    #+#             */
+/*   Updated: 2018/01/18 04:58:13 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*ft_memccpy(void *dst, const void *src, int c, size_t n)
+int		ft_sqrt(int	n)
 {
-	size_t	index;
+	int	index;
 
 	index = 0;
-	while (index < n)
-	{
-		((char*)dst)[index] = ((char*)src)[index];
-		if (((char*)src)[index] == (char)c)
-			return (dst + index + 1);
+	while (index * index < n)
 		index++;
-	}
-	return (NULL);
+	return (index);
 }

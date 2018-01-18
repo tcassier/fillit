@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnncat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 19:30:17 by tcassier          #+#    #+#             */
-/*   Updated: 2018/01/12 22:26:28 by tcassier         ###   ########.fr       */
+/*   Created: 2018/01/12 19:40:12 by tcassier          #+#    #+#             */
+/*   Updated: 2018/01/18 03:04:46 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*ft_memccpy(void *dst, const void *src, int c, size_t n)
+char		*ft_strnncat(char *s1, const char *s2, size_t n)
 {
 	size_t	index;
+	size_t	check;
 
-	index = 0;
-	while (index < n)
-	{
-		((char*)dst)[index] = ((char*)src)[index];
-		if (((char*)src)[index] == (char)c)
-			return (dst + index + 1);
-		index++;
-	}
-	return (NULL);
+	index = -1;
+	check = ft_strlen(s1);
+	while (++index < n)
+		s1[check + index] = s2[index];
+	return (s1);
 }

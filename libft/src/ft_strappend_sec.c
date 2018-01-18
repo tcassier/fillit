@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strappend_sec.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 19:30:17 by tcassier          #+#    #+#             */
-/*   Updated: 2018/01/12 22:26:28 by tcassier         ###   ########.fr       */
+/*   Created: 2018/01/11 19:20:56 by tcassier          #+#    #+#             */
+/*   Updated: 2018/01/11 19:21:17 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*ft_memccpy(void *dst, const void *src, int c, size_t n)
+char		*ft_strappend_sec(char **s1, char **s2, char c)
 {
-	size_t	index;
+	char	*ret;
 
-	index = 0;
-	while (index < n)
-	{
-		((char*)dst)[index] = ((char*)src)[index];
-		if (((char*)src)[index] == (char)c)
-			return (dst + index + 1);
-		index++;
-	}
-	return (NULL);
+	if (s1 && *s1 && s2 && *s2)
+		ret = ft_strjoin(*s1, *s2);
+	else if (s1 && *s1)
+		ret = ft_strdup(*s1);
+	else if (s2 && *s2)
+		ret = ft_strdup(*s2);
+	else
+		ret = ft_strdup("");
+	if (c == 'F' || c == 'B')
+		ft_strdel(s1);
+	if (c == 'S' || c == 'B')
+		ft_strdel(s2);
+	return (ret);
 }

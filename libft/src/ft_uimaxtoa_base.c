@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_uimaxtoa_base.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 19:30:17 by tcassier          #+#    #+#             */
-/*   Updated: 2018/01/12 22:26:28 by tcassier         ###   ########.fr       */
+/*   Created: 2018/01/10 11:55:55 by tcassier          #+#    #+#             */
+/*   Updated: 2018/01/17 21:49:10 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*ft_memccpy(void *dst, const void *src, int c, size_t n)
+char		*ft_uimaxtoa_base(uintmax_t n, int base)
 {
-	size_t	index;
+	int		len;
+	char	*str;
 
-	index = 0;
-	while (index < n)
+	if (n == 0)
+		return (ft_strdup("0"));
+	len = ft_nbrlen_uimax_base(n, base);
+	if (!(str = ft_strnew(len)))
+		return (NULL);
+	str[len--] = '\0';
+	while (n > 0)
 	{
-		((char*)dst)[index] = ((char*)src)[index];
-		if (((char*)src)[index] == (char)c)
-			return (dst + index + 1);
-		index++;
+		if (n % base < 10)
+			str[len--] = n % base + '0';
+		else
+			str[len--] = n % base - 10 + 'a';
+		n /= base;
 	}
-	return (NULL);
+	return (str);
 }

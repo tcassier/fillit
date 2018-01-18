@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnjoin_s2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcassier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 19:30:17 by tcassier          #+#    #+#             */
-/*   Updated: 2018/01/12 22:26:28 by tcassier         ###   ########.fr       */
+/*   Created: 2017/11/08 09:22:05 by tcassier          #+#    #+#             */
+/*   Updated: 2018/01/17 21:53:51 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*ft_memccpy(void *dst, const void *src, int c, size_t n)
+char		*ft_strnjoin_s2(char const *s1, char const *s2, int n)
 {
-	size_t	index;
+	char	*str;
 
-	index = 0;
-	while (index < n)
-	{
-		((char*)dst)[index] = ((char*)src)[index];
-		if (((char*)src)[index] == (char)c)
-			return (dst + index + 1);
-		index++;
-	}
-	return (NULL);
+	if (!(str = ft_strnew((ft_strlen(s1) + n))))
+		return (NULL);
+	ft_strcpy(str, s1);
+	ft_strnncat(str, s2, n);
+	return (str);
 }

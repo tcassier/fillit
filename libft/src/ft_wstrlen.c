@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_wstrlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 19:30:17 by tcassier          #+#    #+#             */
-/*   Updated: 2018/01/12 22:26:28 by tcassier         ###   ########.fr       */
+/*   Created: 2018/01/17 23:56:01 by tcassier          #+#    #+#             */
+/*   Updated: 2018/01/18 01:23:44 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*ft_memccpy(void *dst, const void *src, int c, size_t n)
+size_t		ft_wstrlen(wchar_t *wstr)
 {
-	size_t	index;
+	size_t	len;
+	int		bytes;
 
-	index = 0;
-	while (index < n)
+	len = 0;
+	bytes = 0;
+	while (*wstr)
 	{
-		((char*)dst)[index] = ((char*)src)[index];
-		if (((char*)src)[index] == (char)c)
-			return (dst + index + 1);
-		index++;
+		if ((bytes = ft_wchar_byte(*wstr)) == -1)
+			return (0);
+		len += (size_t)bytes;
+		wstr++;
 	}
-	return (NULL);
+	return (len);
 }
