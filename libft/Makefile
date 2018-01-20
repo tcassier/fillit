@@ -6,7 +6,7 @@
 #    By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/15 23:45:03 by tcassier          #+#    #+#              #
-#    Updated: 2018/01/18 04:58:31 by tcassier         ###   ########.fr        #
+#    Updated: 2018/01/20 01:19:24 by tcassier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,9 @@ SRC = ft_atoi.c                \
 	  ft_isspace.c             \
 	  ft_isupper.c             \
 	  ft_itoa.c                \
+	  ft_itoa_dst.c            \
 	  ft_itoa_base.c           \
+	  ft_lflen.c               \
 	  ft_lstadd.c              \
 	  ft_lstadd_back.c         \
 	  ft_lstdel.c              \

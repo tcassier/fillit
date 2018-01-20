@@ -6,7 +6,7 @@
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 00:54:05 by tcassier          #+#    #+#             */
-/*   Updated: 2018/01/16 00:12:36 by tcassier         ###   ########.fr       */
+/*   Updated: 2018/01/20 01:47:44 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,35 @@ int			ft_printf(const char *format, ...)
 		}
 	}
 	ft_lstdel(&lst, &ft_memdel_bis);
+	va_end(ap);
+	return (ret);
+}
+
+int			ft_sprintf(char **str, const char *format, ...)
+{
+	va_list	ap;
+	t_list	*lst;
+	t_list	*tmp;
+	int		check;
+	int		ret;
+
+	lst = NULL;
+	va_start(ap, format);
+	if ((ret = ft_vasprintf(&lst, format, ap)) >= 0)
+	{
+		if ((*str = ft_strnew(ret)))
+		{
+			tmp = lst;
+			check = 0;
+			while (tmp)
+			{
+				ft_strnncat(*str + check, tmp->content, tmp->content_size);
+				check += tmp->content_size;
+				tmp = tmp->next;
+			}
+		}
+	}
+	ft_lstdel(&lst, ft_memdel_bis);
 	va_end(ap);
 	return (ret);
 }

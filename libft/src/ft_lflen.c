@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_lflen.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/12 19:39:16 by tcassier          #+#    #+#             */
-/*   Updated: 2018/01/18 05:06:19 by tcassier         ###   ########.fr       */
+/*   Created: 2018/01/18 07:56:52 by tcassier          #+#    #+#             */
+/*   Updated: 2018/01/20 01:16:17 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+size_t		ft_lflen(double n)
 {
-	free(*ap);
-	*ap = NULL;
+	size_t	ret;
+	int		n_int;
+
+	ret = 0;
+	if (n < 0)
+	{
+		ret++;
+		n = -n;
+	}
+	n_int = (int)n;
+	while (n_int)
+	{
+		n_int /= 10;
+		ret++;
+	}
+	ret += 7;
+	return (ret);
 }

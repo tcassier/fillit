@@ -6,7 +6,7 @@
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 20:02:47 by tcassier          #+#    #+#             */
-/*   Updated: 2018/01/18 04:58:55 by tcassier         ###   ########.fr       */
+/*   Updated: 2018/01/20 01:30:29 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ int					ft_isprint(int c);
 int					ft_isspace(int c);
 int					ft_isupper(int c);
 char				*ft_itoa(int n);
+char				*ft_itoa_dst(char *dst, intmax_t n);
 char				*ft_itoa_base(int n, int base);
+size_t				ft_lflen(double n);
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstadd_back(t_list *alst, t_list *new);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
@@ -103,6 +105,7 @@ void				ft_putnbr(int n);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_putstr(char const *s);
 void				ft_putstr_fd(char const *s, int fd);
+int					ft_sprintf(char **str, const char *format, ...);
 int					ft_sqrt(int n);
 char				*ft_strappend(char **s1, char **s2, char c);
 char				*ft_strappend_sec(char **s1, char **s2, char c);
