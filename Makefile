@@ -6,7 +6,7 @@
 #    By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/07 23:19:18 by tcassier          #+#    #+#              #
-#    Updated: 2018/01/18 03:34:28 by tcassier         ###   ########.fr        #
+#    Updated: 2018/01/31 09:38:59 by tcassier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME = fillit
 
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I$(INC_PATH) -I$(LFT_INC_PATH)
 
 SRC_PATH = ./src/
