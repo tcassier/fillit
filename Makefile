@@ -6,7 +6,7 @@
 #    By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/07 23:19:18 by tcassier          #+#    #+#              #
-#    Updated: 2018/01/31 09:38:59 by tcassier         ###   ########.fr        #
+#    Updated: 2018/02/01 06:48:58 by tcassier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ LFT_FLAGS = -L $(LFT_PATH) -lft
 all: $(NAME)
 
 $(NAME): $(OBJ_PATH) $(OBJS)
-	@make -C $(LFT_PATH) re
+	@make -C $(LFT_PATH) all
 	@$(CC) $(CFLAGS) -o $@ $(OBJS) $(LFT_FLAGS)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(INCS)
