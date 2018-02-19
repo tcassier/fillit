@@ -6,14 +6,13 @@
 /*   By: tcassier <tcassier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:19:36 by tcassier          #+#    #+#             */
-/*   Updated: 2017/12/13 18:19:25 by tcassier         ###   ########.fr       */
+/*   Updated: 2018/02/19 15:27:57 by tcassier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 # include "libft.h"
-# include <fcntl.h>
 
 typedef struct		s_tetris
 {
